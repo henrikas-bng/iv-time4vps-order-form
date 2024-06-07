@@ -2,10 +2,14 @@
 
 class Config {
     private static $data = [
-        'DB_HOST' => '127.0.0.1:3307',
-        'DB_NAME' => 'time4vps_orders',
-        'DB_USERNAME' => 'root',
+        // Database
+        'DB_HOST' => '',
+        'DB_NAME' => '',
+        'DB_USERNAME' => '',
         'DB_PASSWORD' => '',
+        // Time4VPS API
+        'API_AUTH_EMAIL'=> '',
+        'API_AUTH_PASSWORD'=> '',
     ];
 
     /**
