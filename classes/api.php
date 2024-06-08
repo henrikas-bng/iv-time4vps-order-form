@@ -5,7 +5,7 @@ require_once(realpath(dirname(__FILE__)) . '/config.php');
 class Api {
     private static $base_url = 'https://billing.time4vps.com/api';
 
-    public static function call(string $request_path) {
+    public static function call(string $request_path, string $method = 'get', array $params = []) {
         $url = self::$base_url . $request_path;
         $auth = base64_encode(Config::get('API_AUTH_EMAIL') . ':' . Config::get('API_AUTH_PASSWORD'));
         $certificate = realpath(dirname(__FILE__) . '/../cacert.pem');
@@ -21,6 +21,12 @@ class Api {
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($curl, CURLOPT_CAINFO, $certificate);
+
+        if ($method == 'post' && !empty($params)) {
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+        }
+
         $result = curl_exec($curl);
         curl_close($curl);
 
