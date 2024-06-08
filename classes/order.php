@@ -36,4 +36,34 @@ class Order {
         $this->id = Db::get()->lastInsertId();
         return $response;
     }
+
+    /**
+     * Get all user orders by id.
+     */
+    public static function getAllByUserId(int $id) : array|bool {
+        $sql = 'SELECT * FROM orders WHERE user_id=' . $id;
+
+        try {
+            $response = Db::get()->query($sql);
+            return $response->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $_) {
+            return false;
+        }
+    }
+
+    /**
+     * Get order by id.
+     */
+    public static function getById(int $id) : Order|bool {
+        $sql = 'SELECT * FROM orders WHERE order_id=' . $id;
+
+        try {
+            $query = Db::get()->prepare($sql);
+            $query->setFetchMode(PDO::FETCH_CLASS, 'Order');
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $_) {
+            return false;
+        }
+    }
 }
