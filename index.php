@@ -43,6 +43,7 @@
                 $new_order->save();
 
                 $order_placed = 1;
+                unset($temp_data); // won't need this from here
             } else {
                 $order_placed = 0;
             }
