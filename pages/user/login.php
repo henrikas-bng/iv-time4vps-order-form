@@ -59,7 +59,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="flex flex-col min-h-screen bg-[#dfe4ea]">
-        <div class="flex justify-center items-center flex-grow container py-24 px-4">
+        <div class="flex justify-center items-center flex-grow container mx-auto py-24 px-4">
             <div class="flex flex-col w-full max-w-[400px] bg-white rounded-lg shadow-xl py-10 px-8">
                 <h2 class="text-xl font-bold text-center text-[#2f3542] mb-10">
                     <?php if ($user_auth_error) { ?>
