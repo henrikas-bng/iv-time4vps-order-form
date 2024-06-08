@@ -61,7 +61,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registracija - IV Interview Task</title>
+        <title>Sign up - IV Interview Task</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="../../resources/js/validation.js"></script>
     </head>
@@ -71,10 +71,10 @@
                 <h2 class="text-xl font-bold text-center text-[#2f3542] mb-10">
                     <?php if ($user_save_error) { ?>
                         <div class="text-center text-sm text-white bg-[#ff4757] rounded-lg px-4 py-2 mb-4">
-                            Nepavyko užsiregistruoti!
+                            There was a problem signing up!
                         </div>
                     <?php } ?>
-                    Sukurkite vartotoją
+                    Create an account
                 </h2>
                 <form action="/iv-time4vps-order-form/pages/user/register" method="POST">
                     <input 
@@ -82,7 +82,7 @@
                         type="email" 
                         name="register_form_email" 
                         value="" 
-                        placeholder="El. paštas" 
+                        placeholder="Email" 
                         minlength="5"
                         maxlength="64"
                         required
@@ -92,7 +92,7 @@
                         type="password" 
                         name="register_form_password" 
                         value="" 
-                        placeholder="Slaptažodis"
+                        placeholder="Password"
                         minlength="8"
                         maxlength="32"
                         required
@@ -104,7 +104,7 @@
                         type="password" 
                         name="register_form_confirm" 
                         value="" 
-                        placeholder="Pakartokite slaptažodį"
+                        placeholder="Confirm password"
                         minlength="8"
                         maxlength="32"
                         required
@@ -115,18 +115,18 @@
                         name="register_form_submit" 
                         value="1"
                         >
-                        Registruotis
+                        Sign up
                     </button>
                 </form>
                 <div class="flex justify-center items-center mt-10">
                     <p class="text-[#57606f] me-4">
-                        Jau turite vartotoją?
+                        Already have an account?
                     </p>
                     <a 
                         href="/iv-time4vps-order-form/pages/user/login" 
                         class="text-[#5352ed] hover:text-[#70a1ff] active:underline transition-all font-medium"
                         >
-                        Prisijungti
+                        Sign in
                     </a>
                 </div>
             </div>

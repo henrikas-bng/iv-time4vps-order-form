@@ -55,7 +55,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Prisijungti - IV Interview Task</title>
+        <title>Sign in - IV Interview Task</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="flex flex-col min-h-screen bg-[#dfe4ea]">
@@ -64,10 +64,10 @@
                 <h2 class="text-xl font-bold text-center text-[#2f3542] mb-10">
                     <?php if ($user_auth_error) { ?>
                         <div class="text-center text-sm text-white bg-[#ff4757] rounded-lg px-4 py-2 mb-4">
-                            Nepavyko prisijungti!
+                            There was a problem signing in!
                         </div>
                     <?php } ?>
-                    Prisijunkite
+                    Let&apos;s sign in!
                 </h2>
                 <form action="/iv-time4vps-order-form/pages/user/login" method="POST">
                     <input 
@@ -75,7 +75,7 @@
                         type="email" 
                         name="login_form_email" 
                         value="" 
-                        placeholder="El. paštas" 
+                        placeholder="Email" 
                         minlength="5"
                         maxlength="64"
                         required
@@ -85,7 +85,7 @@
                         type="password" 
                         name="login_form_password" 
                         value="" 
-                        placeholder="Slaptažodis"
+                        placeholder="Password"
                         minlength="8"
                         maxlength="32"
                         required
@@ -96,18 +96,18 @@
                         name="login_form_submit" 
                         value="1"
                         >
-                        Prisijungti
+                        Sign in
                     </button>
                 </form>
                 <div class="flex justify-center items-center mt-10">
                     <p class="text-[#57606f] me-4">
-                        Dar neturite vartotojo?
+                        Don&apos;t have an account?
                     </p>
                     <a 
                         href="/iv-time4vps-order-form/pages/user/register" 
                         class="text-[#5352ed] hover:text-[#70a1ff] active:underline transition-all font-medium"
                         >
-                        Registruotis
+                        Sign up
                     </a>
                 </div>
             </div>

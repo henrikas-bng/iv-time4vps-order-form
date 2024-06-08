@@ -21,6 +21,15 @@
 
                 if (isset($temp_data->product)) {
                     $data = $temp_data;
+                    $product_prices = array_map(
+                        function ($price) {
+                            // don't want this option
+                            if ($price && $price->title !== 'Biennially') {
+                                var_dump($price);
+                            }
+                        }, 
+                        $data->product->config->product[0]->items
+                    );
                 }
 
                 $step = 2;
@@ -32,8 +41,8 @@
         // $data->product                                   // PRODUCT DATA
         // $data->product->config->product[0]               // ADDITIONAL PRICING SELECT DATA
         
-        // var_dump($data->product);
-        // exit();
+        var_dump($data->product);
+        exit();
     } else {
         $api_response = Api::call('/category/available/vps');
 
@@ -51,7 +60,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>IV Užduotis</title>
+        <title>IV Interview Task</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="resources/js/mobile_menu.js"></script>
     </head>
@@ -62,7 +71,7 @@
             >
             <div class="flex justify-between items-center p-4">
                 <span class="text-xl font-semibold text-[#dfe4ea]">
-                    Meniu
+                    Menu
                 </span>
                 <button
                     class="flex items-center text-[#dfe4ea] font-medium hover:text-white active:text-[#70a1ff] transition-all"
@@ -78,13 +87,13 @@
                     href="/iv-time4vps-order-form/"
                     class="flex justify-center items-center text-xl font-medium text-[#ced6e0] hover:bg-white/10 p-4 active:text-[#70a1ff]"
                     >
-                    Užsisakyti
+                    New order
                 </a>
                 <a 
                     href="/iv-time4vps-order-form/pages/order/history"
                     class="flex justify-center items-center text-xl font-medium text-[#ced6e0] hover:bg-white/10 p-4 active:text-[#70a1ff]"
                     >
-                    Užsakymai
+                    Order history
                 </a>
             </div>
             <div class="flex justify-center items-center p-4">                
@@ -95,7 +104,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 me-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
                     </svg>
-                    Atsijungti
+                    Sign out
                 </a>
             </div>
         </div>
@@ -107,7 +116,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
                         </svg>
                         <span class="text-lg font-semibold bg-gradient-to-r from-[#5352ed] to-[#2f3542] text-transparent bg-clip-text ms-2">
-                            IV Užduotis
+                            IV Task
                         </span>
                     </div>
                     <div class="flex md:hidden justify-end items-center flex-grow">
@@ -118,7 +127,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 me-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                             </svg>
-                            Meniu
+                            Menu
                         </button>
                     </div>
                     <div class="hidden md:flex justify-between items-center flex-grow">
@@ -128,7 +137,7 @@
                                     href="/iv-time4vps-order-form/" 
                                     class="text-[#2f3542] font-medium hover:text-[#57606f] active:underline transition-all"
                                     >
-                                    Užsisakyti
+                                    New order
                                 </a>
                             </li>
                             <li>
@@ -136,7 +145,7 @@
                                     href="/iv-time4vps-order-form/pages/order/history" 
                                     class="text-[#747d8c] font-medium hover:text-[#57606f] active:underline transition-all"
                                     >
-                                    Užsakymai
+                                    Order history
                                 </a>
                             </li>
                         </ul>
@@ -147,7 +156,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 me-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
                             </svg>
-                            Atsijungti
+                            Sign out
                         </a>
                     </div>
                 </div>
@@ -157,7 +166,7 @@
             <?php if (!$data) { ?>
                 <div class="container flex justify-center items-center mx-auto p-4">
                     <div class="w-full max-w-[600px] text-center text-sm text-white bg-[#ff4757] rounded-lg px-4 py-2 mb-4">
-                        Įvyko klaida!
+                        An error occured!
                     </div>
                 </div>
             <?php } ?>
@@ -166,12 +175,12 @@
                     <?php foreach ($data as $item) { ?>
                         <div class="flex flex-col w-full max-w-[400px] bg-[#f1f2f6] hover:bg-white rounded-md shadow-lg hover:shadow-xl transition-all p-2 m-4">
                             <h3 class="text-lg text-center text-[#2f3542] font-semibold mb-4">
-                                Virtualus dedikuotas serveris
+                                Virtual private server
                                 <br>
                                 <?= $item->name ?>
                             </h3>
                             <div class="text-[#57606f] flex flex-col items-center">
-                                <h5 class="text-center text-md font-medium mb-2">Serverio specifikacija</h5>
+                                <h5 class="text-center text-md font-medium mb-2">Server specifications</h5>
                                 <?= $item->description ?>
                             </div>
                             <div class="flex justify-center items-center text-lg font-semibold bg-gradient-to-r from-[#5352ed] to-[#2f3542] text-transparent bg-clip-text my-6">
@@ -181,7 +190,7 @@
                                 href="/iv-time4vps-order-form/?product=<?= $item->id ?>"
                                 class="flex justify-center items-center w-full text-sm font-medium text-white bg-gradient-to-r from-[#70a1ff] active:to-[#70a1ff] to-[#5352ed] relative hover:-translate-y-2 hover:shadow-md active:shadow-lg rounded-md transition-all p-4"
                                 >
-                                Užsisakyti
+                                Order
                             </a>
                         </div>
                     <?php } ?>
@@ -192,7 +201,7 @@
                     <form action="/iv-time4vps-order-form/" method="GET">
                         <div>
                             <h2 class="text-xl font-semibold text-center text-[#2f3542]">
-                                Virtualus dedikuotas serveris
+                                Virtual private server
                                 <br>
                                 <?= $data->product->category_name ?> - <?= $data->product->name ?>
                             </h2>
@@ -200,7 +209,7 @@
                         <div>
                             <div>
                                 <p>
-                                    Pasirinkite mokėjimo planą:
+                                    Choose payment cycle:
                                 </p>
                                 <select>
                                     <option>Testing</option>
@@ -212,7 +221,7 @@
                             </div>
                         </div>
                         <div>
-                            <button>Tęsti</button>
+                            <button>Continue</button>
                         </div>
                     </form>
                 </div>
