@@ -17,7 +17,6 @@
 
         if (is_numeric($product_id) && ctype_alpha($cycle) && strlen($cycle) == 1 && is_numeric($pay_method)) {
             $post_data = [
-                'product_id' => $product_id,
                 'cycle' => $cycle,
                 'pay_method' => $pay_method,
             ];

@@ -12,7 +12,7 @@ class Api {
         
         $headers = [
             'Authorization: Basic ' . $auth,
-            'Content-Type: application/json',
+            'Content-Type: application/x-www-form-urlencoded',
         ];
 
         $curl = curl_init();
@@ -23,8 +23,9 @@ class Api {
         curl_setopt($curl, CURLOPT_CAINFO, $certificate);
 
         if ($method == 'post' && !empty($params)) {
+            $post_data = http_build_query($params);
             curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
         }
 
         $result = curl_exec($curl);
