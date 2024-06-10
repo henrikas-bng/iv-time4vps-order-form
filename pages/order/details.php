@@ -46,7 +46,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            Order (<?= $order->order_number ?>) - IV Interview Task
+            Order Details <?= (isset($order->order_number)) ? '(' . $order->order_number . ')' : '' ?> - IV Interview Task
         </title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="/iv-time4vps-order-form/resources/js/mobile_menu.js"></script>
